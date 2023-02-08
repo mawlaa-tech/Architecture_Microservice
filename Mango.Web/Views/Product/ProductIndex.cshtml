@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Mango.Web.Models.ProductDto>
+  
+<br/>
+<br/>
+<div class="container" p-4 border>
+    <div class="row pb-2">
+        <div class="col-md-4 ">
+            <h1 class="text-primary">
+
+
+            </h1>
+        </div>
+        <div claas="col-md-4 ">
+            <a asp-action="ProductCreate" asp-controller="Product" class="btn btn-outline-primary"> 
+                <i class="fas fa-plus">
+                    Create New Product
+
+            </i>
+            </a>
+        </div>
+        <div class="col-md-4 text-end pt-1">
+            <div class="btn btn-success" id="Refresh">
+                actualiser
+                 
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <table class="table" id="product">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+                {
+            <tr>
+                
+                    <td>@item.Name</td>
+                    <td>@item.CategoryName</td>
+                    <td>@((item.Price).ToString("c"))</td>
+                    <td>
+                        <a asp-action="ProductEdit" class="btn btn-success"  asp-route-productId="@item.ProductId">
+                            <i class="fas fa-edit"></i>
+
+
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="ProductDelete" class="btn btn-danger" asp-route-productId="@item.ProductId">
+                            <i class="fas fa-trash"></i>
+
+
+                        </a>
+                    </td>
+                    
+
+                 
+            </tr>
+                }
+        </tbody>
+    </table>
+    <div/>
